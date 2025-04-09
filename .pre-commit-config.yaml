@@ -14,7 +14,10 @@ repos:
     hooks:
       - id: pytest
         name: Run pytest tests using .venv
-        entry: .venv/bin/pytest --maxfail=1 --disable-warnings -v
+        entry: 
+         - |
+          bash ./setup.sh
+          .venv/bin/pytest --maxfail=1 --disable-warnings -v
         language: system
         types: [python]
         pass_filenames: false
