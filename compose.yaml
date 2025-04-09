@@ -55,7 +55,7 @@ services:
       dockerfile: Dockerfile
     container_name: sentiment_service_container
     environment:
-      MODEL_NAME: "cointegrated/rubert-tiny2-cedr-emotion-balanced"
+      MODEL_NAME: "cointegrated/rubert-tiny-sentiment-balanced"
       ONNX_MODEL_PATH: "/app/model.onnx"
     ports:
       - "8003:8003"

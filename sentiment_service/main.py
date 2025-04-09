@@ -10,7 +10,7 @@ import numpy as np
 
 app = FastAPI(title="Sentiment Service")
 
-MODEL_NAME = os.getenv("MODEL_NAME", "cointegrated/rubert-tiny2-cedr-emotion-balanced")
+MODEL_NAME = os.getenv("MODEL_NAME", "cointegrated/rubert-tiny-sentiment-balanced")
 # Здесь можно загрузить onnx-модель, но в примере загрузим обычную PyTorch-модель
 # Если используете onnxruntime, нужно сконвертировать модель в onnx заранее.
 # Предположим, что у вас уже есть модель onnx. Для упрощения – PyTorch.
