@@ -1,0 +1,20 @@
+repos:
+#  - repo: https://github.com/psf/black
+#    rev: 25.1.0  # обновите до актуальной версии при необходимости
+#    hooks:
+#      - id: black
+#        language_version: python3.12
+#
+#  - repo: https://github.com/PyCQA/flake8
+#    rev: 7.2.0
+#    hooks:
+#      - id: flake8
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: Run pytest tests using .venv
+        entry: .venv/bin/pytest --maxfail=1 --disable-warnings -v
+        language: system
+        types: [python]
+        pass_filenames: false
