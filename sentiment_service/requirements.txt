@@ -4,3 +4,4 @@ onnxruntime
 transformers
 torch
 psycopg2
+pydantic
