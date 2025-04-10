@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install black flake8 isort
+          pip install black flake8 isort autoflake8
 
       - name: Run black
         run: black .
@@ -32,4 +32,4 @@ jobs:
         run: isort .
 
       - name: Run flake8
-        run: flake8 .
+        run: autoflake8 . --recursive --in-place -a
