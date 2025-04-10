@@ -1,31 +1,35 @@
-# This is a basic workflow to help you get started with Actions
+name: Lint and Style Check
 
-name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-# Controls when the workflow will run
-on: [push, pull_request]
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  lint:
+    name: Check Code Style
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          fetch-depth: 0
-          
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Lint Code Base
-        uses: super-linter/super-linter@v5.6.1
-        env:
-          VALIDATE_ALL_CODEBASE: true
-          VALIDATE_PYTHON_FLAKE8: true
-          VALIDATE_PYTHON_BLACK: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black flake8 isort
+
+      - name: Run black (check only)
+        run: black . --check
+
+      - name: Run isort (check only)
+        run: isort . --check-only
+
+      - name: Run flake8
+        run: flake8 .
