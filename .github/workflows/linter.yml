@@ -32,4 +32,4 @@ jobs:
         run: isort .
 
       - name: Run flake8
-        run: autoflake8 . --recursive --in-place -a
+        run: autoflake8 . 
