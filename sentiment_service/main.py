@@ -11,7 +11,7 @@ import numpy as np
 app = FastAPI(title="Sentiment Service")
 
 # Задаем имя модели и путь для сохранения ONNX модели
-MODEL_NAME = os.getenv("MODEL_NAME", "seara/rubert-tiny2-russian-sentiment")
+MODEL_NAME = os.getenv("MODEL_NAME", "cointegrated/rubert-tiny-sentiment-balanced")
 ONNX_MODEL_PATH = os.getenv("ONNX_MODEL_PATH", "model/model.onnx")
 
 # Загружаем токенизатор и PyTorch модель
